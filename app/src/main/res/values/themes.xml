@@ -1,0 +1,18 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.TimeManager" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Customize your light theme here. -->
+        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="Theme.TimeManager" parent="Base.Theme.TimeManager" />
+    <style name="MyEditText" parent="Widget.AppCompat.EditText">
+        <item name="android:background">@drawable/rounded_edittext</item>
+        <item name="android:layout_height">40dp</item>
+    </style>
+    <style name="MyTextView" parent="Widget.AppCompat.TextView">
+        <item name="android:background">@drawable/rounded_edittext</item>
+        <item name="android:layout_height">40dp</item>
+    </style>
+</resources>
