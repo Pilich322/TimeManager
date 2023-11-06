@@ -6,6 +6,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -38,7 +39,8 @@ public class UnitsFragment extends Fragment {
                 Bundle result = new Bundle();
                 result.putString("bundleKey", binding.editTextText2.getText().toString());
                 getParentFragmentManager().setFragmentResult("unit", result);
-                getParentFragmentManager().beginTransaction().disallowAddToBackStack().replace(R.id.fragmentContainerView,new GoalAddFragment()).commit();
+                Fragment goalAdd = getParentFragmentManager().findFragmentByTag("AddFrag");
+                getParentFragmentManager().beginTransaction().replace(R.id.fragmentContainerView,goalAdd).commit();
             }
         });
 

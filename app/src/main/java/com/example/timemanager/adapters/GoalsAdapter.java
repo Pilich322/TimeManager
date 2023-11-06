@@ -57,7 +57,6 @@ public class GoalsAdapter extends RecyclerView.Adapter<GoalsAdapter.ViewHolder> 
             if(holder.count.getVisibility()==View.VISIBLE){
                 holder.countAdd.setVisibility(View.VISIBLE);
                 holder.countAdd.requestFocus();
-
                 holder.count.setVisibility(View.INVISIBLE);
                 holder.click.setImageResource(R.drawable.baseline_check_24);
             }

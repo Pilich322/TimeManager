@@ -42,7 +42,6 @@ public class DBManager {
     }
     public void addGoal(Goals goals){
         ContentValues cv = new ContentValues();
-        cv.put(DBConst.GOALS_ID,goals.getId());
         cv.put(DBConst.GOALS_COUNT,goals.getCount());
         cv.put(DBConst.GOALS_NAME,goals.getName());
         cv.put(DBConst.GOALS_DESCRIPTION,goals.getDescription());
@@ -53,7 +52,6 @@ public class DBManager {
     }
     public void updateGoal(Goals goals){
         ContentValues cv = new ContentValues();
-        cv.put(DBConst.GOALS_ID,goals.getId());
         cv.put(DBConst.GOALS_COUNT,goals.getCount());
         cv.put(DBConst.GOALS_NAME,goals.getName());
         cv.put(DBConst.GOALS_DESCRIPTION,goals.getDescription());

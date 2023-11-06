@@ -26,15 +26,34 @@ import java.util.Calendar;
 import java.util.Objects;
 
 public class GoalAddFragment extends Fragment {
-
     Goals goals = new Goals();
     FragmentGoalAddBinding binding;
+    DBManager dbManager;
     Calendar dateAndTime= Calendar.getInstance();
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if (savedInstanceState != null) {
+            binding.editTextDate.setText(savedInstanceState.getString("date"));
+            binding.editTextDescription.setText(savedInstanceState.getString("description"));
+            binding.editTextGoalName.setText(savedInstanceState.getString("name"));
+            binding.editTextCount.setText(String.valueOf(savedInstanceState.getInt("count")));
+        }
     }
-
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        dbManager.closeDb();
+    }
+    @Override
+    public void onSaveInstanceState(final Bundle outState)
+    {
+        super.onSaveInstanceState(outState);
+        outState.putString("name", binding.editTextGoalName.getText().toString());
+        outState.putString("description", binding.editTextDescription.getText().toString());
+        outState.putString("date", binding.editTextDate.getText().toString());
+        outState.putInt("count", Integer.parseInt(binding.editTextDate.getText().toString()));
+    }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -55,7 +74,7 @@ public class GoalAddFragment extends Fragment {
         binding.textViewUnit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                getParentFragmentManager().beginTransaction().replace(R.id.fragmentContainerView,new UnitsFragment()).commit();
+                getParentFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.fragmentContainerView,new UnitsFragment()).commit();
             }
         });
         binding.editTextDate.setOnClickListener(new View.OnClickListener() {
@@ -75,10 +94,10 @@ public class GoalAddFragment extends Fragment {
                 goals.setUnit(binding.textViewUnit.getText().toString());
                 goals.setDescription(binding.editTextDescription.getText().toString());
                 goals.setCount(Integer.parseInt(binding.editTextCount.getText().toString()));
-                DBManager dbManager = new DBManager(getContext());
+                dbManager = new DBManager(getContext());
                 dbManager.openDb();
                 dbManager.addGoal(goals);
-                getParentFragmentManager().beginTransaction().replace(R.id.fragmentContainerView,new UnitsFragment()).disallowAddToBackStack().commit();
+                getParentFragmentManager().beginTransaction().replace(R.id.fragmentContainerView,new GoalsFragment()).disallowAddToBackStack().commit();
             }
         });
     }
