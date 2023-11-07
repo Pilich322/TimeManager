@@ -35,6 +35,7 @@ public class DBManager {
             goals.setDescription(cursor.getString(cursor.getColumnIndex(DBConst.GOALS_DESCRIPTION)));
             goals.setUnit(cursor.getString(cursor.getColumnIndex(DBConst.GOALS_UNIT)));
             goals.setName(cursor.getString(cursor.getColumnIndex(DBConst.GOALS_NAME)));
+            goals.setImage(cursor.getString(cursor.getColumnIndex(DBConst.GOALS_IMAGE)));
             goalsList.add(goals);
         }
         cursor.close();
@@ -48,6 +49,7 @@ public class DBManager {
         cv.put(DBConst.GOALS_UNIT,goals.getUnit());
         cv.put(DBConst.GOALS_COUNT_NOW,goals.getCountNow());
         cv.put(DBConst.GOALS_DATE_END,goals.getDate().toString());
+        cv.put(DBConst.GOALS_IMAGE,goals.getImage());
         db.insert(DBConst.GOALS_TABLE_NAME,null,cv);
     }
     public void updateGoal(Goals goals){
@@ -58,6 +60,7 @@ public class DBManager {
         cv.put(DBConst.GOALS_UNIT,goals.getUnit());
         cv.put(DBConst.GOALS_COUNT_NOW,goals.getCountNow());
         cv.put(DBConst.GOALS_DATE_END,goals.getDate().toString());
+        cv.put(DBConst.GOALS_IMAGE,goals.getImage());
         db.update(DBConst.GOALS_TABLE_NAME,cv, DBConst.GOALS_ID + " = " + goals.getId(),null);
     }
 

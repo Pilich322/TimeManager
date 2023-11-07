@@ -11,8 +11,17 @@ public class Goals {
     private String description;
     private String unit;
     private LocalDate date;
+    private String image;
 
     public Goals() {
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 
     public LocalDate getDate() {

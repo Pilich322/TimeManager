@@ -5,7 +5,10 @@
 
     <string-array name="units">
         <item>Рубли</item>
+        <item>Доллары</item>
         <item>Раз</item>
         <item>Штук</item>
+        <item>Метров</item>
+        <item>Километров</item>
     </string-array>
 </resources>
